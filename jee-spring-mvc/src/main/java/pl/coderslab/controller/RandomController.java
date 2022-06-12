@@ -11,11 +11,18 @@ public class RandomController {
 
     private Random random = new Random();
 
-    @GetMapping(value = "/random/{max}", produces = "text/plain;charset=UTF-8")
+    @GetMapping(value = "/random/{min}/{max}", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String showRandomWithMax(@PathVariable int max, @PathVariable int min) {
+        int randomNumber = random.nextInt(max - min + 1) + min;
+        return "Użytkownik podał wartości " + min + " i " + max + ". Wylosowano liczbę: " + randomNumber;
+    }
+
+/*    @GetMapping(value = "/random/{max}", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String showRandomWithMax(@PathVariable int max) {
         int randomNumber = random.nextInt(max) + 1;
         return "Użytkownik podał wartość " + max + ". Wylosowano liczbę: " + randomNumber;
-    }
+    }*/
 
 }
