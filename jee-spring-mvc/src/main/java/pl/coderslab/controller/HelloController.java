@@ -1,12 +1,16 @@
 package pl.coderslab.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
+
+    @GetMapping(value = "/hello/{firstName}/{lastName}", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String hello(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName) {
+        return "Witaj " + firstName + " " + lastName;
+    }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
