@@ -14,7 +14,7 @@ public class FormController {
 
     @GetMapping("/form")
     public String form() {
-        return "/form.jsp";
+        return "/form";
     }
 
     @PostMapping("/form")
